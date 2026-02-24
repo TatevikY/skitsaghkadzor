@@ -37,6 +37,7 @@
       background: linear-gradient(rgba(0, 30, 60, 0.25), rgba(0, 30, 60, 0.35)),
         url('background.png') center/cover no-repeat;
       background-attachment: scroll;
+      isolation: isolate;
     }
 
     .logo {
@@ -200,6 +201,12 @@
       .hero {
         background: linear-gradient(rgba(0, 30, 60, 0.25), rgba(0, 30, 60, 0.35)),
           url('background-mobile.png') center/cover no-repeat;
+      }
+      .logo {
+        mix-blend-mode: multiply;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        transform: translateX(-50%) translateZ(0);
       }
     }
 
