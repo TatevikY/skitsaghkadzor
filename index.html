@@ -39,19 +39,31 @@
       background-attachment: scroll;
     }
 
-    .top-nav {
+    .header-area {
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: clamp(1rem, 4vw, 2rem);
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      z-index: 2;
+    }
+
+    .header-area .logo {
+      width: clamp(90px, 22vw, 140px);
+      height: clamp(90px, 22vw, 140px);
+      object-fit: contain;
+    }
+
+    .page-nav {
       display: flex;
       justify-content: center;
       gap: 1.5rem;
-      padding: clamp(0.75rem, 3vw, 1.25rem) 1rem;
-      z-index: 3;
     }
 
-    .top-nav a {
+    .page-nav a {
       color: #fff;
       font-size: clamp(0.85rem, 2.2vw, 1rem);
       font-weight: 600;
@@ -62,25 +74,14 @@
       transition: opacity 0.2s;
     }
 
-    .top-nav a:hover {
+    .page-nav a:hover {
       opacity: 0.9;
       text-decoration: underline;
     }
 
-    .logo {
-      position: absolute;
-      top: clamp(1rem, 4vw, 2rem);
-      left: 50%;
-      transform: translateX(-50%);
-      width: clamp(90px, 22vw, 140px);
-      height: clamp(90px, 22vw, 140px);
-      object-fit: contain;
-      z-index: 2;
-    }
-
     .title {
       position: absolute;
-      top: clamp(8rem, 22vw, 12.5rem);
+      top: clamp(9.5rem, 28vw, 14.5rem);
       left: 50%;
       transform: translateX(-50%);
       width: 100%;
@@ -264,13 +265,15 @@
 
     /* Landscape phones / short viewports */
     @media (max-height: 500px) {
-      .logo {
-        width: 70px;
-        height: 70px;
+      .header-area {
         top: 0.75rem;
       }
+      .header-area .logo {
+        width: 70px;
+        height: 70px;
+      }
       .title {
-        top: 5.5rem;
+        top: 6.5rem;
         font-size: 1.1rem;
       }
       .slogan {
@@ -291,11 +294,13 @@
 </head>
 <body>
   <div class="hero">
-    <nav class="top-nav">
-      <a href="about.html">About Us</a>
-      <a href="prices.html">Prices</a>
-    </nav>
-    <img src="logo.png" alt="Ski Tsaghkadzor Instructor" class="logo">
+    <div class="header-area">
+      <img src="logo.png" alt="Ski Tsaghkadzor Instructor" class="logo">
+      <nav class="page-nav">
+        <a href="about.html">About Us</a>
+        <a href="prices.html">Prices</a>
+      </nav>
+    </div>
     <h1 class="title">Skitsaghkadzor</h1>
     <p class="slogan">Adventure Awaits You Here</p>
     <section class="contact-section">
