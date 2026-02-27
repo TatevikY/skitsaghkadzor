@@ -32,45 +32,57 @@
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
+      gap: clamp(1.25rem, 3vw, 2rem);
       padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
       background: linear-gradient(rgba(0, 30, 60, 0.25), rgba(0, 30, 60, 0.35)),
         url('background.png') center/cover no-repeat;
       background-attachment: scroll;
+      overflow-y: auto;
     }
 
     .header-area {
-      position: absolute;
-      top: clamp(1rem, 4vw, 2rem);
-      left: 50%;
-      transform: translateX(-50%);
+      flex-shrink: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 0.75rem;
+      padding-top: clamp(1rem, 4vw, 2rem);
       z-index: 2;
+    }
+
+    .header-area .logo-link {
+      display: block;
+      line-height: 0;
     }
 
     .header-area .logo {
       width: clamp(90px, 22vw, 140px);
       height: clamp(90px, 22vw, 140px);
       object-fit: contain;
+      transition: opacity 0.2s;
+    }
+
+    .header-area .logo-link:hover .logo {
+      opacity: 0.9;
     }
 
     .page-nav {
       display: flex;
       justify-content: center;
-      gap: 1.5rem;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.25rem;
     }
 
     .page-nav a {
       color: #fff;
-      font-size: clamp(0.85rem, 2.2vw, 1rem);
+      font-size: clamp(0.8rem, 2.2vw, 1rem);
       font-weight: 600;
       text-decoration: none;
       letter-spacing: 0.05em;
       text-transform: uppercase;
       text-shadow: 0 1px 8px rgba(0,0,0,0.4);
       transition: opacity 0.2s;
+      white-space: nowrap;
     }
 
     .page-nav a:hover {
@@ -79,11 +91,14 @@
     }
 
     .page-content {
-      position: relative;
+      flex: 0 1 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       width: 90%;
       max-width: 640px;
-      margin-top: clamp(11rem, 35vw, 16rem);
-      padding: 0 1rem 2rem;
+      padding: clamp(1rem, 3vw, 2rem) 1rem;
       z-index: 2;
     }
 
@@ -107,13 +122,11 @@
     }
 
     .contact-section {
-      position: absolute;
-      bottom: clamp(5%, 6vw, 8%);
-      left: 50%;
-      transform: translateX(-50%);
+      flex-shrink: 0;
       width: 90%;
       max-width: 420px;
-      padding: 0 1rem;
+      margin-top: 0;
+      padding: clamp(0.75rem, 3vw, 1.5rem) 1rem;
       padding-bottom: env(safe-area-inset-bottom, 0);
       z-index: 2;
     }
@@ -125,7 +138,7 @@
       letter-spacing: clamp(0.1em, 2vw, 0.2em);
       text-transform: uppercase;
       text-align: center;
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.2rem;
       text-shadow: 0 1px 10px rgba(0,0,0,0.4);
     }
 
@@ -175,7 +188,7 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 0.75rem 1.25rem;
-      margin-top: clamp(0.75rem, 3vw, 1.25rem);
+      margin-top: clamp(0.5rem, 2vw, 0.75rem);
     }
 
     .contact-phones a {
@@ -209,12 +222,10 @@
         font-size: 0.9rem;
       }
       .page-nav {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.75rem;
+        gap: 0.5rem 1rem;
       }
       .page-nav a {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
       }
       .contact-phones {
         flex-direction: column;
@@ -223,9 +234,11 @@
 
     /* Portrait phones and small devices */
     @media (max-width: 480px) {
+      .page-nav a {
+        font-size: 0.78rem;
+      }
       .page-content {
-        margin-top: clamp(9rem, 30vw, 12rem);
-        padding: 0 0.75rem 1.5rem;
+        padding: 1rem 0.75rem;
       }
       .contact-section {
         width: 95%;
@@ -237,15 +250,14 @@
     /* Landscape phones / short viewports */
     @media (max-height: 500px) {
       .header-area {
-        top: 0.5rem;
+        padding-top: 0.5rem;
       }
       .header-area .logo {
         width: 60px;
         height: 60px;
       }
       .page-content {
-        margin-top: clamp(6rem, 20vw, 8rem);
-        padding: 0 1rem 1rem;
+        padding: 0.75rem 1rem;
       }
       .page-content h1 {
         font-size: 1.2rem;
@@ -254,7 +266,7 @@
         font-size: 0.85rem;
       }
       .contact-section {
-        bottom: 3%;
+        padding: 0.75rem 1rem;
       }
     }
 
@@ -269,7 +281,9 @@
 <body>
   <div class="hero">
     <div class="header-area">
-      <img src="logo.png" alt="Ski Tsaghkadzor Instructor" class="logo">
+      <a href="index.html" class="logo-link" aria-label="Home">
+        <img src="logo.png" alt="Ski Tsaghkadzor Instructor" class="logo">
+      </a>
       <nav class="page-nav">
         <a href="about.html">About Us</a>
         <a href="prices.html">Prices</a>
