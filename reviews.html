@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="keywords" content="ski instructor in armenia, ski, skiing, snowboard, Tsaghkadzor, Winter in armenia,">
-  <title>About Us – Skitsaghkadzor</title>
+  <meta name="keywords" content="ski instructor in armenia, ski, skiing, snowboard, Tsaghkadzor, Winter in armenia, ski reviews,">
+  <title>Reviews – Skitsaghkadzor</title>
   <link rel="icon" href="logo.png" type="image/png">
   <style>
     * {
@@ -50,27 +50,39 @@
       z-index: 2;
     }
 
+    .header-area .logo-link {
+      display: block;
+      line-height: 0;
+    }
+
     .header-area .logo {
       width: clamp(90px, 22vw, 140px);
       height: clamp(90px, 22vw, 140px);
       object-fit: contain;
+      transition: opacity 0.2s;
+    }
+
+    .header-area .logo-link:hover .logo {
+      opacity: 0.9;
     }
 
     .page-nav {
       display: flex;
       justify-content: center;
-      gap: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem 1.5rem;
     }
 
     .page-nav a {
       color: #fff;
-      font-size: clamp(0.85rem, 2.2vw, 1rem);
+      font-size: clamp(0.8rem, 2.2vw, 1rem);
       font-weight: 600;
       text-decoration: none;
       letter-spacing: 0.05em;
       text-transform: uppercase;
       text-shadow: 0 1px 8px rgba(0,0,0,0.4);
       transition: opacity 0.2s;
+      white-space: nowrap;
     }
 
     .page-nav a:hover {
@@ -104,6 +116,66 @@
       line-height: 1.6;
       text-align: center;
       text-shadow: 0 1px 8px rgba(0,0,0,0.3);
+    }
+
+    .reviews-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1.25rem;
+      width: clamp(56px, 14vw, 72px);
+      height: clamp(56px, 14vw, 72px);
+      border-radius: 50%;
+      background: linear-gradient(135deg, #d4af37 0%, #f4e4bc 50%, #c9a227 100%);
+      color: #5c4618;
+      box-shadow: 0 2px 12px rgba(212, 175, 55, 0.4);
+      animation: gold-pulse 2.5s ease-in-out infinite;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .reviews-link-wrap:hover .reviews-link {
+      transform: scale(1.15) rotate(10deg);
+      box-shadow: 0 6px 24px rgba(212, 175, 55, 0.6);
+      animation: gold-glow 0.6s ease-in-out infinite;
+    }
+
+    .reviews-link svg {
+      width: clamp(28px, 7vw, 36px);
+      height: clamp(28px, 7vw, 36px);
+    }
+
+    .reviews-link-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 1rem;
+      gap: 0.5rem;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .reviews-link-wrap:hover .reviews-link-label {
+      text-decoration: underline;
+    }
+
+    .reviews-link-label {
+      font-size: clamp(0.85rem, 2.2vw, 0.95rem);
+      font-weight: 600;
+      color: rgba(255,255,255,0.95);
+      text-shadow: 0 1px 8px rgba(0,0,0,0.4);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-align: center;
+    }
+
+    @keyframes gold-pulse {
+      0%, 100% { box-shadow: 0 2px 12px rgba(212, 175, 55, 0.4); }
+      50% { box-shadow: 0 4px 20px rgba(212, 175, 55, 0.7); }
+    }
+
+    @keyframes gold-glow {
+      0%, 100% { box-shadow: 0 6px 24px rgba(212, 175, 55, 0.6); }
+      50% { box-shadow: 0 8px 32px rgba(212, 175, 55, 0.9); }
     }
 
     .contact-section {
@@ -192,7 +264,7 @@
       text-decoration: underline;
     }
 
-    /* Mobile view – portrait-oriented background */
+    /* Mobile view */
     @media (max-width: 768px) {
       .hero {
         background: linear-gradient(rgba(0, 30, 60, 0.25), rgba(0, 30, 60, 0.35)),
@@ -202,26 +274,14 @@
 
     /* Small phones */
     @media (max-width: 380px) {
-      .page-content h1 {
-        font-size: 1.2rem;
-      }
-      .page-content p {
-        font-size: 0.9rem;
-      }
-      .page-nav {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.75rem;
-      }
-      .page-nav a {
-        font-size: 0.8rem;
-      }
-      .contact-phones {
-        flex-direction: column;
-      }
+      .page-content h1 { font-size: 1.2rem; }
+      .page-content p { font-size: 0.9rem; }
+      .page-nav { gap: 0.5rem 0.75rem; }
+      .page-nav a { font-size: 0.75rem; }
+      .contact-phones { flex-direction: column; }
     }
 
-    /* Portrait phones and small devices */
+    /* Portrait phones */
     @media (max-width: 480px) {
       .page-content {
         margin-top: clamp(9rem, 30vw, 12rem);
@@ -234,42 +294,30 @@
       }
     }
 
-    /* Landscape phones / short viewports */
+    /* Landscape phones */
     @media (max-height: 500px) {
-      .header-area {
-        top: 0.5rem;
-      }
-      .header-area .logo {
-        width: 60px;
-        height: 60px;
-      }
+      .header-area { top: 0.5rem; }
+      .header-area .logo { width: 60px; height: 60px; }
       .page-content {
         margin-top: clamp(6rem, 20vw, 8rem);
         padding: 0 1rem 1rem;
       }
-      .page-content h1 {
-        font-size: 1.2rem;
-      }
-      .page-content p {
-        font-size: 0.85rem;
-      }
-      .contact-section {
-        bottom: 3%;
-      }
+      .page-content h1 { font-size: 1.2rem; }
+      .page-content p { font-size: 0.85rem; }
+      .contact-section { bottom: 3%; }
     }
 
-    /* Tablets and up */
     @media (min-width: 769px) {
-      .hero {
-        background-attachment: fixed;
-      }
+      .hero { background-attachment: fixed; }
     }
   </style>
 </head>
 <body>
   <div class="hero">
     <div class="header-area">
-      <img src="logo.png" alt="Ski Tsaghkadzor Instructor" class="logo">
+      <a href="index.html" class="logo-link" aria-label="Home">
+        <img src="logo.png" alt="Ski Tsaghkadzor Instructor" class="logo">
+      </a>
       <nav class="page-nav">
         <a href="about.html">About Us</a>
         <a href="prices.html">Prices</a>
@@ -277,8 +325,14 @@
       </nav>
     </div>
     <main class="page-content">
-      <h1>About Us</h1>
-      <p>Welcome to Skitsaghkadzor – your trusted ski instructor in Tsaghkadzor, Armenia. We offer professional skiing and snowboarding lessons for all skill levels, from beginners to advanced riders. Experience the beauty of winter in Armenia with our experienced instructors.</p>
+      <h1>Reviews</h1>
+      <p>See what our guests say about their skiing and snowboarding experience with Skitsaghkadzor. We're proud of the positive feedback from visitors who've enjoyed lessons in Tsaghkadzor. More reviews coming soon – book a lesson and share your experience!</p>
+      <a href="https://share.google/6K6ixpNM7NsJUw1Nc" target="_blank" rel="noopener noreferrer" class="reviews-link-wrap" aria-label="Leave a Google Review">
+        <span class="reviews-link-label">Leave a review</span>
+        <span class="reviews-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </span>
+      </a>
     </main>
     <section class="contact-section">
       <h2>Contact Us</h2>
